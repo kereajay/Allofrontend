@@ -30,7 +30,7 @@ function Doctors() {
   return (
     <>
       <div className="w-[100%]">
-        <div className="flex px-14 mt-3 w-[100%] justify-between  items-center gap-6 py-2">
+        <div className="flex px-14 mt-10 w-[100%] justify-between  items-center gap-6 py-2">
           <div className="relative w-full md:w-[30%] ">
             <input
               type="text"

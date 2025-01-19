@@ -129,7 +129,7 @@ function Appointment() {
   };
 
   return (
-    <div >
+    <div>
       {/* Reschedule Modal */}
       <Modal
         isOpen={isModalOpen}
@@ -164,88 +164,82 @@ function Appointment() {
       {/* Appointments Table */}
       <div className="overflow-x-auto px-2 py-20">
         <div className="py-4">
-            <Link to={"/Newappointment"}>
-          <button className="text-2xl font-semibold bg-purple-400 px-2 py-2 rounded-2xl">
-            Book A NewAppointment
-          </button>
+          <Link to={"/Newappointment"}>
+            <button className="text-2xl font-semibold bg-purple-400 px-2 py-2 rounded-2xl">
+              Book A NewAppointment
+            </button>
           </Link>
         </div>
-        <table className="min-w-full divide-y divide-gray-200 shadow-sm">
-          <thead className="bg-gray-100">
+        <table className="min-w-full table-auto border-collapse border border-gray-300 shadow-md dark:bg-gray-900 dark:text-white">
+          <thead className="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
             <tr>
-              <th className="px-4 py-3 text-left text-lg font-medium text-gray-500 uppercase">
+              <th className="px-4 py-3 text-left text-lg font-semibold text-gray-600 dark:text-gray-200 uppercase border-r border-gray-300 dark:border-gray-700">
                 Queue
               </th>
-              <th className="px-4 py-3 text-left text-lg font-medium text-gray-500 uppercase">
+              <th className="px-4 py-3 text-left text-lg font-semibold text-gray-600 dark:text-gray-200 uppercase border-r border-gray-300 dark:border-gray-700">
                 Patient
               </th>
-              <th className="px-4 py-3 text-left text-lg font-medium text-gray-500 uppercase">
+              <th className="px-4 py-3 text-left text-lg font-semibold text-gray-600 dark:text-gray-200 uppercase border-r border-gray-300 dark:border-gray-700">
                 Date
               </th>
-              <th className="px-4 py-3 text-left text-lg font-medium text-gray-500 uppercase">
+              <th className="px-4 py-3 text-left text-lg font-semibold text-gray-600 dark:text-gray-200 uppercase border-r border-gray-300 dark:border-gray-700">
                 Doctor
               </th>
-              <th className="px-4 py-3 text-left text-lg font-medium text-gray-500 uppercase">
+              <th className="px-4 py-3 text-left text-lg font-semibold text-gray-600 dark:text-gray-200 uppercase border-r border-gray-300 dark:border-gray-700">
                 Department
               </th>
-              <th className="px-4 py-3 text-left text-lg font-medium text-gray-500 uppercase">
+              <th className="px-4 py-3 text-left text-lg font-semibold text-gray-600 dark:text-gray-200 uppercase border-r border-gray-300 dark:border-gray-700">
                 Status
               </th>
-              <th className="px-4 py-3 text-left text-lg font-medium text-gray-500 uppercase">
+              <th className="px-4 py-3 text-left text-lg font-semibold text-gray-600 dark:text-gray-200 uppercase border-r border-gray-300 dark:border-gray-700">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {appointments.map((appoint,index) => (
-              <tr key={appoint._id} className="hover:bg-gray-50">
-                <td className="px-4 py-3 text-lg text-gray-700">
-                  {index+1}
+          <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+            {appointments.map((appoint, index) => (
+              <tr
+                key={appoint._id}
+                className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                <td className="px-4 py-3 text-lg text-gray-700 dark:text-gray-300 border-r border-gray-300 dark:border-gray-700">
+                  {index + 1}
                 </td>
-                <td className="px-4 py-3 text-lg text-gray-700">
+                <td className="px-4 py-3 text-lg text-gray-700 dark:text-gray-300 border-r border-gray-300 dark:border-gray-700">
                   {appoint.firstName}
                 </td>
-                <td className="px-4 py-3 text-lg text-gray-700">
+                <td className="px-4 py-3 text-lg text-gray-700 dark:text-gray-300 border-r border-gray-300 dark:border-gray-700">
                   {new Date(appoint.appointment_date).toLocaleString()}
                 </td>
-                <td className="px-4 py-3 text-lg text-gray-700">
+                <td className="px-4 py-3 text-lg text-gray-700 dark:text-gray-300 border-r border-gray-300 dark:border-gray-700">
                   {appoint.doctor.firstName} {appoint.doctor.lastName}
                 </td>
-                <td className="px-4 py-3 text-lg text-gray-700">
+                <td className="px-4 py-3 text-lg text-gray-700 dark:text-gray-300 border-r border-gray-300 dark:border-gray-700">
                   {appoint.department}
                 </td>
-                <td className="px-4 py-3 text-lg text-gray-700">
+                <td className="px-4 py-3 text-lg border-r border-gray-300 dark:border-gray-700">
                   <select
                     value={appoint.status}
                     onChange={(e) => handleStatus(appoint._id, e.target.value)}
-                    className={` focus:outline-none   ${
+                    className={`focus:outline-none border rounded px-2 py-1 ${
                       appoint.status === "Pending"
-                        ? "text-yellow-500"
+                        ? "text-yellow-500 bg-yellow-100"
                         : appoint.status === "Accepted"
-                        ? "text-green-500"
-                        : "text-red-500"
+                        ? "text-green-500 bg-green-100"
+                        : "text-red-500 bg-red-100"
                     }`}
                   >
-                    <option value="Pending" className="text-yellow-500">
-                      Pending
-                    </option>
-                    <option value="Accepted" className="text-green-500">
-                      Accepted
-                    </option>
-                    <option value="Rejected" className="text-red-500">
-                      Rejected
-                    </option>
+                    <option value="Pending">Pending</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="Rejected">Rejected</option>
                   </select>
                 </td>
-                <td className="px-4 py-3 text-lg text-gray-700">
-                  <button
-                    onClick={() => openRescheduleModal(appoint)}
-                    className="text-blue-500 hover:underline"
-                  >
+                <td className="px-4 py-3 text-lg text-blue-500 hover:underline border-r border-gray-300 dark:border-gray-700">
+                  <button onClick={() => openRescheduleModal(appoint)}>
                     Reschedule
                   </button>
                 </td>
-                <td className="px-4 py-3 text-lg text-gray-700">
+                <td className="px-4 py-3 text-lg text-red-500 hover:text-red-700 border-r border-gray-300 dark:border-gray-700">
                   <button onClick={() => handledeleteappointment(appoint._id)}>
                     ❌
                   </button>

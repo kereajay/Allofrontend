@@ -53,7 +53,7 @@ function Navbar() {
   };
   return (
     <div>
-      <div className="lg:flex md:hidden sm:hidden  px-4  py-2 text-grey-500 dark:bg-black dark:text-white items-center justify-between">
+      <div className="lg:flex md:hidden sm:hidden  px-4  py-2 text-grey-500 dark:bg-black dark:text-white items-center justify-between ">
         <div className="flex gap-4 items-center ">
           {/* <img src={ajay} alt="" width={50}  className='rounded-full'/> */}
           <h1 className="text-3xl  px-4 py-1 flex items-center gap-2 text-purple-400">
